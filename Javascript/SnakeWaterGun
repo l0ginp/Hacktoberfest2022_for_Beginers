@@ -1,0 +1,121 @@
+// Snake Water Gun game
+
+let character = ["Snake", "Water", "Gun"]
+
+// console.log(character)
+
+let playerPoints = 0
+
+let computerPoints = 0
+
+let player
+
+console.log("Instructions :-\n(1) If you wins a turn you will get '2' points and computer will get -1 points\n(2) If computer wins a turn computer will get '2' points and you will get '-1' points\n(3) Press (s) or (S) for Snake, (w) or (W) for Water, (g) or (G) for Gun\n")
+
+let turns = Number.parseInt(prompt("Enter the number of turns you want to play the game"))
+
+for (let i = 0; i < turns; i++) {
+
+    // console.log("hello")
+
+    let random_number = Math.floor(Math.random() * 3)
+
+    let comp = character[random_number]
+
+    let user = prompt("Enter your choice")
+
+    if (user === "s" || user === "S") {
+
+        player = character[0]
+
+    }
+
+    else if (user === "w" || user === "W") {
+
+        player = character[1]
+
+    }
+
+    else if (user === "g" || user === "G") {
+
+        player = character[2]
+
+    }
+
+    else {
+
+        console.log("Enter a relevent choice")
+
+        continue
+
+    }
+
+    if (comp === "Snake" && player === "Gun" || comp === "Water" && player === "Snake" || comp === "Gun" && player === "Water") {
+
+        console.log()
+
+        console.log("You choosed " + player + "\nComputer choosed " + comp)
+
+        console.log("Congrats! You won")
+
+        playerPoints += 2
+
+        computerPoints -= 1
+
+    }
+
+    else if (comp === "Gun" && player === "Snake" || comp === "Snake" && player === "Water" || comp === "Water" && player === "Gun") {
+
+        console.log()
+
+        console.log("You choosed " + player + "\nComputer choosed " + comp)
+
+        console.log("Sorry! You lost Better luck next time")
+
+        playerPoints -= 1
+
+        computerPoints += 2
+
+    }
+
+    else {
+
+        console.log()
+
+        console.log("You choosed " + player + "\nComputer choosed " + comp)
+
+        console.log("Its a Tie you both get 1-1 Points")
+
+        playerPoints += 1
+
+        computerPoints += 1
+
+    }
+
+}
+
+console.log()
+
+console.log("Your points : " + playerPoints)
+
+console.log("Computer's points : " + computerPoints)
+
+console.log()
+
+if (playerPoints > computerPoints) {
+
+    console.log("You Won the game...")
+
+}
+
+else if (playerPoints == computerPoints) {
+
+    console.log("It's a tie betweem you and computer...")
+
+}
+
+else {
+
+    console.log("You lost the game...")
+
+}
