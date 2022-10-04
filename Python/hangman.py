@@ -1,9 +1,16 @@
 import random                #dhruv2003
-from words import word_list
+import urllib.request
 
+def word_list():
+    # get 10k workd list form mit site
+    word_url = "https://www.mit.edu/~ecprice/wordlist.10000"
+    response = urllib.request.urlopen(word_url)
+    long_txt = response.read().decode()
+    word_list = long_txt.splitlines()
+    return word_list
 
 def get_word():
-    word = random.choice(word_list)
+    word = random.choice(word_list())
     return word.upper()
 
 
